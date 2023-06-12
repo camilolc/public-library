@@ -16,7 +16,6 @@ export const getResults = (product = "") => {
       e.nombreLibro.toLowerCase().includes(product.toLowerCase())
     );
 
-    //Dispatch Camilo Lopez sing in new Json
     dispatch(
       setResults({
         results: booksFilter,

@@ -10,6 +10,7 @@ import "../styles/searchResult.css";
 import Shipping from "../../assets/ic_shipping.png";
 
 import Book from "../../assets/librod.png";
+import { useEffect } from "react";
 
 export const SearchResults = () => {
   //Redux
@@ -27,9 +28,9 @@ export const SearchResults = () => {
     navigate(`${id}`);
   };
 
-  if (results.length == 0) {
+  useEffect(() => {
     dispatch(getResults(productName ? productName : ""));
-  }
+  }, []);
 
   return (
     <>
@@ -39,7 +40,7 @@ export const SearchResults = () => {
         ) : (
           <div className="search-result-container">
             <ul>
-              {results.map(
+              {results?.map(
                 ({ idLibro, nombreLibro, genero, anoPublicacion }) => (
                   <li key={idLibro}>
                     <div className="search-result-box">
