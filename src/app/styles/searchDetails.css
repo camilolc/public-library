@@ -23,7 +23,7 @@
 	flex-direction: column;
 	margin-inline-start: auto;
 	margin-right: 5%;
-	width: 220px;
+	width: 30%;
 }
 
 .search-detail-img{
@@ -62,7 +62,7 @@
 	color: #FFFFFF;
 	cursor: pointer;
 	height: 50px;
-	width: 90%;
+	/* width: 90%; */
 	margin-bottom: 15px;
 }
 
@@ -81,4 +81,15 @@
 	color: #999999 ;
 	font-size: 16px;
 	margin-bottom: 32px;
+}
+
+.search-inputs{
+	display: flex;
+	flex-direction: column;
+}
+
+.search-inputs .inputs{
+	margin-bottom: 20px;
+	height: 35px;
+	box-shadow: inset;
 }

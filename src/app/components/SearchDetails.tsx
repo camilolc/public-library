@@ -7,6 +7,7 @@ import { getResultById } from "../store/slices/searchById/thunk";
 import { useNavigate, useParams } from "react-router-dom";
 //Css
 import "../styles/searchDetails.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 //Assets
 import Shipping from "../../assets/ic_shipping.png";
 
@@ -44,6 +45,13 @@ export const SearchDetails = () => {
                   {`Stock: ${parseInt(String(stock))}`}
                 </h3>
               </div>
+              <div className="search-inputs">
+                <input className="inputs" placeholder="Nombre solicitante" />
+                <input className="inputs" placeholder="Email" />
+                <input className="inputs" placeholder="Dirección" />
+                <input className="inputs" placeholder="teléfono" />
+              </div>
+
               <button className="search-detail-button">
                 Solicitar prestamo
               </button>
