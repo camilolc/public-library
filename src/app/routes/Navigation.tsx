@@ -5,6 +5,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { SearchBox, SearchDetails, SearchResults } from "../components";
 import { Login } from "../auth/Components/Login";
 import { Home } from "../auth/Components/Home";
+import { PrivateRoutes } from "./PrivateRoutes";
+import { AppRoutes } from "./AppRoutes";
 
 export const Navigation = () => {
   return (
@@ -15,7 +17,14 @@ export const Navigation = () => {
           <Route path="items/:id" element={<SearchDetails />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="home" element={<Home />}></Route>
+        <Route
+          path="home/*"
+          element={
+            <PrivateRoutes>
+              <AppRoutes></AppRoutes>
+            </PrivateRoutes>
+          }
+        ></Route>
         <Route path="/*" element={<Navigate to={"/"} />} />
       </Routes>
     </>

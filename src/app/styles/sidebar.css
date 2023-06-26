@@ -1,7 +1,9 @@
 .sb-container{
 	width: 300px;
 	height: 100vh;
-	display: flex;
+	/* display: flex; */
+	display: table-column;
+	float: left;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;

@@ -1,0 +1,30 @@
+
+
+.cl-container{
+	position: fixed;
+	width: 50%;
+	margin-left: 40%;
+	margin-top: 10%;
+}
+
+.cl-form{
+	display: flex;
+	flex-direction: column;
+	margin-top: 80px;
+}
+
+.cl-input{
+	width: 40%;
+	margin-bottom: 20px;
+	height: 40px;
+}
+.cl-input-des{
+	width: 40%;
+	margin-bottom: 20px;
+	height: 300px;
+}
+
+.cl-button{
+	width: 40%;
+	border-radius: 8px;
+}

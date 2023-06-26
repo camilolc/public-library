@@ -1,10 +1,40 @@
-import React from "react";
+import React, { ChangeEvent, useEffect, useState, SyntheticEvent } from "react";
 
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const navigate = useNavigate();
+
+  const validateData = {
+    email: "camilo@poligran.edu.co",
+    password: "admin123",
+  };
+  const initialState = {
+    email: "",
+    password: "",
+  };
+
+  const [user, setUser] = useState(initialState);
+  const [show, setShow] = useState(false);
+  const { email, password } = user;
+
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = target;
+    setUser({
+      ...user,
+      [name as string]: value,
+    });
+  };
+
+  const validateCredentials = () => {
+    if (email === validateData.email && password === password) {
+      navigate("/home");
+    } else {
+      setShow(true);
+    }
+  };
+
   return (
     <>
       <div className="auth__main">
@@ -15,32 +45,40 @@ export const Login = () => {
             className="animate__animated animate__fadeIn animate__faster"
           >
             <input
+              onChange={handleChange}
               type="text"
               placeholder="Email"
               name="email"
               className="auth__input"
               autoComplete="off"
-              // value={email}
-              // onChange={handleInputChange}
+              value={email}
+              required
             />
             <input
+              value={password}
+              onChange={handleChange}
               type="password"
               placeholder="Password"
               name="password"
               className="auth__input"
+              required
               // value={password}
-              // onChange={handleInputChange}
             />
             <button
-              type="submit"
+              type="button"
               className="ath-button"
-              onClick={() => navigate("/home")}
+              onClick={validateCredentials}
 
               // disabled={loading}
             >
               Ingresar
             </button>
           </form>
+          {show && (
+            <span style={{ color: "red", fontStyle: "italic" }}>
+              Credenciales incorrectas
+            </span>
+          )}
         </div>
       </div>
     </>

@@ -1,0 +1,14 @@
+.ll-container{
+	position: fixed;
+	width: 50%;
+	margin-left: 40%;
+	margin-top: 10%;
+}
+
+.ll-list{
+	margin-bottom: 10px;
+}
+
+.ll-title{
+	margin-bottom: 50px;
+}

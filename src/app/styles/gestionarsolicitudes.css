@@ -1,0 +1,16 @@
+.gs-container{
+	position: fixed;
+	width: 50%;
+	margin-left: 40%;
+	margin-top: 10%;
+}
+
+.gs-opt{
+	display: flex;
+	flex-direction: column;
+}
+
+.gs-select{
+	margin-bottom: 20px;
+	width: 40%;
+}

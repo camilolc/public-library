@@ -1,0 +1,17 @@
+.sl-container{
+	position: fixed;
+	width: 50%;
+	margin-left: 40%;
+	margin-top: 10%;
+}
+
+.sl-input{
+	margin-top: 8px;
+	margin-bottom: 20px;
+}
+
+.sl-form{
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+}

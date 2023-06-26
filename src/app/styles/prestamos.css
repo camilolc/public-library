@@ -1,0 +1,10 @@
+.ps-container{
+	position: fixed;
+	width: 50%;
+	margin-left: 40%;
+	margin-top: 10%;
+}
+
+.ps-li{
+	margin-bottom: 20px;
+}
