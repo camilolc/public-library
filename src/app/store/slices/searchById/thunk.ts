@@ -12,8 +12,13 @@ import { bookData } from "../../../helpers/dataTest";
 export const getResultById = (idProduct = "") => {
   return async (dispatch: Dispatch, getState: number) => {
     dispatch(startLoadingSearch());
+    const url = `${import.meta.env.VITE_LIBRARY}/${
+      import.meta.env.VITE_LISTAR_LIBROS
+    }`;
+    const resp = await fetch(url);
+    const data: any = await resp.json();
 
-    const bookItem = bookData.find((e) => e.idLibro === Number(idProduct));
+    const bookItem = data.find((e: any) => e.idLibro === Number(idProduct));
 
     dispatch(
       setResults({

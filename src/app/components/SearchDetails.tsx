@@ -18,6 +18,7 @@ import Book from "../../assets/librod.png";
 
 interface Pedido {
   id: string;
+  documento: string;
   nombre: string;
   email: string;
   dirreccion: string;
@@ -29,6 +30,9 @@ export const SearchDetails = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
+
+  const text =
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum";
 
   //Router
   const navigate = useNavigate();
@@ -48,33 +52,36 @@ export const SearchDetails = () => {
 
   const initialState = {
     id: id!,
+    documento: "",
     nombre: "",
     dirreccion: "",
     email: "",
     telefono: "",
   };
   const [pedido, setPedido] = useState<Pedido>(initialState);
+  const [pedidoForm, setPedidoForm] = useState({ id, documento: "" });
 
-  const { dirreccion, email, nombre, telefono } = pedido;
+  const { dirreccion, email, nombre, telefono, documento } = pedido;
 
   const onSubmit = async (e: SyntheticEvent) => {
+    setPedidoForm({
+      documento,
+      id,
+    });
     e.preventDefault();
     setPedido(initialState);
     setShow(!show);
     const url = `${import.meta.env.VITE_LIBRARY}/${
       import.meta.env.VITE_CREAR_PEDIDO
-    }`;
-
-    console.log({ url });
+    }/${id}/${documento}`;
 
     const requestOptions: RequestInit = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(pedido),
+      // body: JSON.stringify(pedidoForm),
     };
 
-    const date = await fetch(url, requestOptions);
-    const data = await date.json();
+    await fetch(url, requestOptions).then((e) => console.log(e));
   };
 
   const handleChangePedido = (e: ChangeEvent<HTMLInputElement>) => {
@@ -82,8 +89,6 @@ export const SearchDetails = () => {
     const { value, name } = target;
     setPedido({ ...pedido, [name as string]: value });
   };
-
-  console.log({ pedido });
   return (
     <div className="search-detail-component">
       {isLoading ? (
@@ -109,6 +114,14 @@ export const SearchDetails = () => {
                     name="nombre"
                     className="inputs"
                     placeholder="Nombre solicitante"
+                  />
+                  <input
+                    required
+                    value={documento}
+                    onChange={handleChangePedido}
+                    name="documento"
+                    className="inputs"
+                    placeholder="documento"
                   />
                   <input
                     required
@@ -144,6 +157,7 @@ export const SearchDetails = () => {
           </div>
           <div className="search-detail-desc">
             <h2 className="search-detail-desc-title">Descripción del libro</h2>
+            <span className="search-detail-dec">{text}</span>
             <span className="search-detail-dec">{genero}</span>
             <p className="search-detail-desc-parr">{anoPublicacion}</p>
           </div>

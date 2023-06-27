@@ -1,36 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/listarlibros.css";
 export const ListarLibros = () => {
-  const libros = [
-    {
-      id: 1,
-      nombre: "El rey lear",
-    },
-    {
-      id: 2,
-      nombre: "100 años de soledad",
-    },
-    {
-      id: 3,
-      nombre: "1989",
-    },
-    {
-      id: 4,
-      nombre: "Revelión en la granja",
-    },
-    {
-      id: 5,
-      nombre: "Candida Erendira",
-    },
-  ];
+  const [libros, setLibros] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const url = `${import.meta.env.VITE_LIBRARY}/${
+        import.meta.env.VITE_LISTAR_LIBROS
+      }`;
+
+      const resp = await fetch(url);
+      const data = await resp.json();
+      setLibros(data);
+    })();
+  }, []);
+
   return (
     <div className="ll-container">
       <h1 className="ll-title">Lista de libros</h1>
       <div>
         <ol>
-          {libros.map((e) => (
-            <li className="ll-list" key={e.id}>
-              {e.nombre}
+          {libros.map((e: any) => (
+            <li className="ll-list" key={e.idLibro}>
+              {e.nombreLibro} - {e.autor.nombreAutor}
             </li>
           ))}
         </ol>

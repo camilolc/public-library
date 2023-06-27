@@ -5,7 +5,7 @@ import { ItemJson, Libro } from "../../../interfaces/interfaces";
 
 // const initialState: SearchResult[]={};
 
-let results: Libro[] = [];
+let results: any = [];
 export const searchSlice = createSlice({
   name: "search",
   initialState: {

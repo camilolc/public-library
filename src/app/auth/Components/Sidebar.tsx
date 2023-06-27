@@ -21,11 +21,11 @@ export const Sidebar = () => {
           <NavLink to="listar-libros">Ver libros</NavLink>
         </li>
         <li className="sb-option">
-          <NavLink to="ges-solic">Gestionar solicituides</NavLink>
+          <NavLink to="ges-solic">Gestionar Prestamos</NavLink>
         </li>
-        <li className="sb-option">
+        {/* <li className="sb-option">
           <NavLink to="his-solic">Historico de solicitudes</NavLink>
-        </li>
+        </li> */}
         <li className="sb-option">
           <NavLink to="clientes">Ver clientes</NavLink>
         </li>

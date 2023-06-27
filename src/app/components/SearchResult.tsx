@@ -41,7 +41,7 @@ export const SearchResults = () => {
           <div className="search-result-container">
             <ul>
               {results?.map(
-                ({ idLibro, nombreLibro, genero, anoPublicacion }) => (
+                ({ idLibro, nombreLibro, genero, anoPublicacion }: any) => (
                   <li key={idLibro}>
                     <div className="search-result-box">
                       <img
