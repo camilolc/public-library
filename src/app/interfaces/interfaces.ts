@@ -84,4 +84,5 @@ export interface Libro {
   genero: string;
   anoPublicacion: string;
   stock: number;
+  descripcion: string;
 }

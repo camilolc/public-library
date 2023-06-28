@@ -17,6 +17,8 @@ export const SearchResults = () => {
   const { results, isLoading } = useSelector(
     (state: RootState) => state.search
   );
+
+  console.log({ results });
   const dispatch: any = useDispatch();
   //Query string
   const query = new URLSearchParams(useLocation().search);
@@ -41,7 +43,14 @@ export const SearchResults = () => {
           <div className="search-result-container">
             <ul>
               {results?.map(
-                ({ idLibro, nombreLibro, genero, anoPublicacion }: any) => (
+                ({
+                  idLibro,
+                  nombreLibro,
+                  genero,
+                  anoPublicacion,
+                  stock,
+                  autor,
+                }: any) => (
                   <li key={idLibro}>
                     <div className="search-result-box">
                       <img
@@ -57,7 +66,13 @@ export const SearchResults = () => {
                           Genero: {genero}
                         </span>
                         <span className="search-result-font-Title">
+                          Autor: {autor.nombreAutor}
+                        </span>
+                        <span className="search-result-font-Title">
                           Año publicación: {anoPublicacion}
+                        </span>
+                        <span className="search-result-font-Title">
+                          Stock: {stock}
                         </span>
                         <button
                           className="search-detail-button"

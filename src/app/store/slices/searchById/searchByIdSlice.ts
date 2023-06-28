@@ -10,10 +10,11 @@ const result: Libro = {
   idAutor: 0,
   nombreLibro: "",
   stock: 0,
+  descripcion: "",
 };
 export const searchSlicebyId = createSlice({
   name: "searchById",
-  initialState: {   
+  initialState: {
     result,
     isLoading: false,
   },

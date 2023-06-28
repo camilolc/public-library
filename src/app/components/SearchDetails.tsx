@@ -31,14 +31,19 @@ export const SearchDetails = () => {
 
   const handleClose = () => setShow(false);
 
-  const text =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum";
-
   //Router
   const navigate = useNavigate();
   //Redux
   const {
-    result: { anoPublicacion, genero, idAutor, idLibro, nombreLibro, stock },
+    result: {
+      anoPublicacion,
+      genero,
+      idAutor,
+      idLibro,
+      nombreLibro,
+      stock,
+      descripcion,
+    },
     isLoading,
   } = useSelector((state: RootState) => state.searchById);
   const dispatch: any = useDispatch();
@@ -148,16 +153,24 @@ export const SearchDetails = () => {
                     placeholder="teléfono"
                   />
                 </div>
-
-                <button className="search-detail-button">
-                  Solicitar prestamo
-                </button>
+                {stock <= 0 ? (
+                  <p style={{ color: "red" }}>
+                    No hay stock disponible en este momento :(
+                  </p>
+                ) : (
+                  <button
+                    className="search-detail-button"
+                    disabled={stock <= 0}
+                  >
+                    Solicitar prestamo
+                  </button>
+                )}
               </form>
             </div>
           </div>
           <div className="search-detail-desc">
             <h2 className="search-detail-desc-title">Descripción del libro</h2>
-            <span className="search-detail-dec">{text}</span>
+            <span className="search-detail-dec">{descripcion}</span>
             <span className="search-detail-dec">{genero}</span>
             <p className="search-detail-desc-parr">{anoPublicacion}</p>
           </div>
