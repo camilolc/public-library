@@ -22,7 +22,8 @@ export const ListarLibros = () => {
         <ol>
           {libros.map((e: any) => (
             <li className="ll-list" key={e.idLibro}>
-              {e.nombreLibro} - {e.autor.nombreAutor}
+              Nombre libro: {e.nombreLibro} - Autor: {e.autor?.nombreAutor} -
+              Stock {e.stock}
             </li>
           ))}
         </ol>

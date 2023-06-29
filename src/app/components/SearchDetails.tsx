@@ -12,7 +12,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 //Assets
-import Shipping from "../../assets/ic_shipping.png";
 
 import Book from "../../assets/librod.png";
 
@@ -79,6 +78,7 @@ export const SearchDetails = () => {
     const url = `${import.meta.env.VITE_LIBRARY}/${
       import.meta.env.VITE_CREAR_PEDIDO
     }/${id}/${documento}`;
+    console.log({ url });
 
     const requestOptions: RequestInit = {
       method: "POST",

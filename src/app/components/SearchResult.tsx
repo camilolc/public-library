@@ -66,7 +66,7 @@ export const SearchResults = () => {
                           Genero: {genero}
                         </span>
                         <span className="search-result-font-Title">
-                          Autor: {autor.nombreAutor}
+                          Autor: {autor?.nombreAutor}
                         </span>
                         <span className="search-result-font-Title">
                           Año publicación: {anoPublicacion}
